@@ -4,7 +4,7 @@ import './marker.css'
 import ReactDOMServer from 'react-dom/server'
 import Popup from './Popup'
 import axios from 'axios'
-import Data from './Data.js'
+import {Data} from './Data.js'
 
 class Map extends Component {
   async componentDidMount() {
@@ -44,18 +44,16 @@ class Map extends Component {
     map.addControl(nav, 'top-right');
 
     map.on('load', (event) => {
-      this.fetchPlaces();
+      Data().then(e => this.fetchPlaces(e))
+      // this.fetchPlaces(Data());
     })
   }
 
-  fetchPlaces = () => {
-    const locations = [
-    // figure out how to bring location state in data to here
-        // Adam will be doing this
-    ]
+  fetchPlaces = (loc) => {
+    // this.state.location;
     const map = this.map;
     const self= this;
-    locations.forEach((location, i) => {
+    loc.forEach((location, i) => {
       let elm = document.createElement('div')
       elm.className = "mapbox-marker"
       let popup = new mapboxgl.Popup({ offset: 25})
@@ -66,6 +64,7 @@ class Map extends Component {
       .setLngLat([location.longitude, location.latitude])
       .setPopup(popup)
       marker.addTo(map)
+      console.log(marker);
     })
   }
 
