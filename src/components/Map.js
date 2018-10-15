@@ -5,6 +5,8 @@ import ReactDOMServer from 'react-dom/server'
 import Popup from './Popup'
 import axios from 'axios'
 import {Data} from './Data.js'
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
+
 
 class Map extends Component {
   async componentDidMount() {
@@ -13,7 +15,7 @@ class Map extends Component {
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/streets-v9',
       zoom: 12,
-      center: [-80.2044, 25.8028]
+      center: [-73.9712, 40.7531]
     };
     const geolocationOptions = {
       enableHighAccuracy: true,
@@ -26,12 +28,12 @@ class Map extends Component {
   createMap = (mapOptions, geolocationOptions) => {
     this.map = new mapboxgl.Map(mapOptions);
     const map = this.map;
-
-    // map.addControl(
-    //   new MapboxGeocoder({
-    //     accessToken: mapboxgl.accessToken
-    //   })
-    // );
+    map.addControl(new mapboxgl.FullscreenControl());
+    map.addControl(
+      new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken
+      })
+    );
 
     map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {
@@ -54,11 +56,13 @@ class Map extends Component {
     const map = this.map;
     const self= this;
     loc.forEach((location, i) => {
+
       let elm = document.createElement('div')
       elm.className = "mapbox-marker"
-      let popup = new mapboxgl.Popup({ offset: 25})
+      // let popup = new mapboxgl.Popup({ offset: 25})
+      let popup = new mapboxgl.Popup()
       .setHTML(ReactDOMServer.renderToStaticMarkup(
-        <Popup location={location}></Popup>
+        <Popup test="this is a test" location={location}></Popup>
       ))
       let marker = new mapboxgl.Marker(elm)
       .setLngLat([location.longitude, location.latitude])

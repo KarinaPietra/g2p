@@ -9,7 +9,8 @@ export const Data = () => {
     const data = response.data
      new_york_locations = data.map((location)=>{
       if (location.city === "New York"){
-        return {latitude: location.latitude, longitude: location.longitude, city: location.city}
+        return location
+        // return {latitude: location.latitude, longitude: location.longitude, city: location.city, name: location.name}
       }
       else{
         return null
