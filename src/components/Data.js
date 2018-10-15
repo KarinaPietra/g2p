@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 // import Map from './Map.js'
-
+//new code
 export const Data = () => {
   let new_york_locations = []
   return axios.get('https://www.refugerestrooms.org/api/v1/restrooms/search.json?query=new%20york&per_page=100')
