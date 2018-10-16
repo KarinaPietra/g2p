@@ -4,7 +4,7 @@ import './marker.css'
 import ReactDOMServer from 'react-dom/server'
 import Popup from './Popup'
 import axios from 'axios'
-import {Data} from './Data.js'
+import {Data, publicData} from './Data.js'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 
 
@@ -48,6 +48,7 @@ class Map extends Component {
     map.on('load', (event) => {
       Data().then(e => this.fetchPlaces(e))
       // this.fetchPlaces(Data());
+
     })
   }
 
@@ -58,10 +59,14 @@ class Map extends Component {
     loc.forEach((location, i) => {
 
       let elm = document.createElement('div')
+      
       // let public_bathrooms= this.props.pubReq
-      elm.className = "mapbox-marker"
+      if (location.public == true) {
+        elm.className = "public-marker"
+      } else {
+        elm.className = "mapbox-marker"
+      }
 
-    
       // let popup = new mapboxgl.Popup({ offset: 25})
       let popup = new mapboxgl.Popup()
       .setHTML(ReactDOMServer.renderToStaticMarkup(

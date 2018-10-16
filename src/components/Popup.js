@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react' 
+import css from '../index.css'
 
 export default class Popup extends Component {
 
@@ -6,11 +7,11 @@ export default class Popup extends Component {
     let info = this.props.location
     return (
       <div>
-        <p>{info.name}</p>
-        <p>{info.comment}</p>
-        <p>{info.directions}</p>
-        <p>{info.street}</p>
-        <p>{info.unisex}</p>
+        <p id="name">{info.name}</p>
+        <p id="street">{info.street}</p>
+        <p id="directions">{info.directions}</p>
+        <p id="comment"> {info.comment}</p>
+        <p id="unisex">{info.unisex}</p>
       </div>
     )
   }
