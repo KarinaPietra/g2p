@@ -58,7 +58,10 @@ class Map extends Component {
     loc.forEach((location, i) => {
 
       let elm = document.createElement('div')
+      // let public_bathrooms= this.props.pubReq
       elm.className = "mapbox-marker"
+
+    
       // let popup = new mapboxgl.Popup({ offset: 25})
       let popup = new mapboxgl.Popup()
       .setHTML(ReactDOMServer.renderToStaticMarkup(
