@@ -11,9 +11,10 @@ import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 
 class Map extends Component {
   constructor(props){
-    super(props)
-    this.state = {loaded: false}
-  }
+   super(props)
+   this.state = {loaded: false}
+ }
+
   async componentDidMount() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keXdlaXNzMTk4MiIsImEiOiJIeHpkYVBrIn0.3N03oecxx5TaQz7YLg2HqA'
     const mapOptions = {
@@ -51,8 +52,9 @@ class Map extends Component {
     map.addControl(nav, 'top-right');
 
     map.on('load', (event) => {
-      Data().then(e => {this.fetchPlaces(e); this.setState({loaded: true})})
-    })
+     Data().then(e => {this.fetchPlaces(e); this.setState({loaded: true})})
+   })
+
   }
 
 
@@ -89,16 +91,18 @@ class Map extends Component {
     const style = {
       width: '100%',
       height: '500px',
+      marginTop: '-11px',
       backgroundColor: 'azure'
     };
 
 
     return (
-      <Segment>
-        <Dimmer active={!this.state.loaded} />
-          <Loader  active={!this.state.loaded} />
-          <div style={style} ref={el => this.mapContainer = el} />
-      </Segment>
+      // <div style={style} ref={el => this.mapContainer = el} />
+      <Segment id="seg">
+         <Loader  active={!this.state.loaded} />
+         <div id="map" style={style} ref={el => this.mapContainer = el} />
+     </Segment>
+
     )
   };
 }

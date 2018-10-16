@@ -35,16 +35,6 @@ const Data = async () => {
   return Promise.all([nyProm, miaProm, pubProm]).then(() => {
     return [...new_york_locations,...miami_locations,...public_bathrooms]
   });
-  
-
- 
-
 
 }
-
-const publicData = async () => {
-
-}
-
-
-export {Data, publicData}
+export {Data}
