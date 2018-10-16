@@ -15,36 +15,69 @@ code {
 
 #name {
   color:#193560;
-  font-style: oblique;
+  font-family: 'Inconsolata', monospace;
   font-size: 2em;
-  text-shadow: 1px 3px #7E8186;
   font-weight: bold;
   font-variant: small-caps
-  
+
 
 }
 
 #street {
   color: blue;
   font-size: 1.3em;
-  text-decoration: underline
+  font-weight: bold;
+  font-family: 'Inconsolata', monospace;
 
 }
-  
+
 #directions {
   color: black;
   font-style: italic;
-  font-size: 1.2em
+  font-size: 1.2em;
+  font-family: 'Inconsolata', monospace;
 }
 
 #comment {
   color: black;
   font-style: italic;
-  font-size: 1em
+  font-size: 1em;
+  font-family: 'Inconsolata', monospace;
 }
 
 #unisex {
   color: black;
   font-style: italic;
-  font-size: 1em
+  font-size: 1em;
+  font-family: 'Inconsolata', monospace;
+}
+
+.mapboxgl-popup-content {
+  border-style: solid;
+}
+
+.key {
+  border-style: solid;
+  display: flex;
+  width: 30%;
+  font-family:'Inconsolata', monospace;
+}
+
+.pic-size {
+  width: 25px;
+  height: 25px;
+}
+
+.list {
+  list-style: none;
+}
+
+.bold {
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.steps {
+  font-style: italic;
+  padding-bottom: 5px;
 }
