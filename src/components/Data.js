@@ -37,8 +37,4 @@ const Data = async () => {
   });
 
 }
-
-
-
-
 export {Data}

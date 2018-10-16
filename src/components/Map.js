@@ -9,12 +9,12 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 import 'semantic-ui-css/semantic.min.css';
 import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 
-
 class Map extends Component {
   constructor(props){
    super(props)
    this.state = {loaded: false}
  }
+
   async componentDidMount() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keXdlaXNzMTk4MiIsImEiOiJIeHpkYVBrIn0.3N03oecxx5TaQz7YLg2HqA'
     const mapOptions = {
@@ -57,6 +57,8 @@ class Map extends Component {
 
   }
 
+
+
   fetchPlaces = (loc) => {
     // this.state.location;
     const map = this.map;
@@ -93,12 +95,14 @@ class Map extends Component {
       backgroundColor: 'azure'
     };
 
+
     return (
       // <div style={style} ref={el => this.mapContainer = el} />
       <Segment id="seg">
          <Loader  active={!this.state.loaded} />
          <div id="map" style={style} ref={el => this.mapContainer = el} />
      </Segment>
+
     )
   };
 }
