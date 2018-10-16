@@ -61,6 +61,7 @@ code {
   display: flex;
   width: 30%;
   font-family:'Inconsolata', monospace;
+  height: 510px;
 }
 
 .pic-size {
@@ -74,10 +75,10 @@ code {
 
 .bold {
   font-weight: bold;
-  padding-bottom: 5px;
+  /* padding-bottom: 5px; */
 }
 
 .steps {
   font-style: italic;
-  padding-bottom: 5px;
+  /* padding-bottom: 5px; */
 }

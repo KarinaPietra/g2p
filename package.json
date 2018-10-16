@@ -9,7 +9,10 @@
     "mapbox-gl": "^0.50.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "2.0.4"
+    "react-loader": "^2.4.5",
+    "react-scripts": "2.0.4",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.82.5"
   },
   "scripts": {
     "start": "react-scripts start",

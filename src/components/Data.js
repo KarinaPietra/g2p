@@ -3,62 +3,42 @@ import axios from 'axios';
 // import Map from './Map.js'
 //new code
 const Data = async () => {
-  let new_york_locations = []
-  let miami_locations = []
-  let public_bathrooms = []
-  let nyReq = await axios.get('https://www.refugerestrooms.org/api/v1/restrooms/search.json?query=new%20york&per_page=100')
-  let miaReq = await axios.get('https://www.refugerestrooms.org/api/v1/restrooms/search.json?query=miami&per_page=100')
-  let pubReq = await axios.get('https://www.refugerestrooms.org/api/v1/restrooms/search.json?summary=miami&query=public&per_page=100')
-  // .then((response) => {
-  const dataNy = nyReq.data
-  const dataMia = miaReq.data
-  const dataPub = pubReq.data
-  new_york_locations = dataNy.map((location)=>{
-    if (location.city === "New York"){
-      return location
-      // return {latitude: location.latitude, longitude: location.longitude, city: location.city, name: location.name}
-    }
-    else{
-      return null
-    }
+  const url = 'https://www.refugerestrooms.org/api/v1/restrooms/search.json?';
+  let new_york_locations = [];
+  let miami_locations = [];
+  let public_bathrooms = [];
+
+  let nyProm = axios.get(url+'query=new%20york&per_page=100').then(({data: dataNy}) => {
+    new_york_locations = dataNy.filter((location)=>{
+      if (location.city === "New York"){
+        return location
+      }
+    })
   })
 
-  new_york_locations = new_york_locations.filter((el) =>   !!el )
-
-  miami_locations = dataMia.map((location)=>{
-    if (location.city === "Miami"){
-      return location
-      // return {latitude: location.latitude, longitude: location.longitude, city: location.city, name: location.name}
-    }
-    else{
-      return null
-    }
+  let miaProm = axios.get(url+'query=miami&per_page=100').then(({data: dataMia}) => {
+    miami_locations = dataMia.filter((location) => {
+      if (location.city === "Miami"){
+        return location
+      }
+    })
   })
 
-  miami_locations = miami_locations.filter((el) =>   !!el )
-
-  public_bathrooms = dataPub.map((location)=>{
-    // if (location.city === "Miami"){
+  let pubProm = axios.get(url+'query=public&per_page=50').then(({data: dataPub}) => {
+    public_bathrooms = dataPub.map((location)=>{
       location.public = true
+
       return location
-    
-      // return {latitude: location.latitude, longitude: location.longitude, city: location.city, name: location.name}
-    // }
-    // else{
-    //   return null
-    // }
+    })
   })
 
-  // public_bathrooms = public_bathrooms.filter((el) =>   !!el )
-
- return [...new_york_locations,...miami_locations,...public_bathrooms]
-
-
-}
-
-const publicData = async () => {
+  return Promise.all([nyProm, miaProm, pubProm]).then(() => {
+    return [...new_york_locations,...miami_locations,...public_bathrooms]
+  });
 
 }
 
 
-export {Data, publicData}
+
+
+export {Data}
