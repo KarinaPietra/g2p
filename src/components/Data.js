@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // import Map from './Map.js'
 //new code
-export const Data = async () => {
+const Data = async () => {
   let new_york_locations = []
   let miami_locations = []
   let public_bathrooms = []
@@ -39,6 +39,7 @@ export const Data = async () => {
 
   public_bathrooms = dataPub.map((location)=>{
     // if (location.city === "Miami"){
+      location.public = true
       return location
     
       // return {latitude: location.latitude, longitude: location.longitude, city: location.city, name: location.name}
@@ -50,10 +51,14 @@ export const Data = async () => {
 
   // public_bathrooms = public_bathrooms.filter((el) =>   !!el )
 
-  return [...new_york_locations,...miami_locations,...public_bathrooms]
+ return [...new_york_locations,...miami_locations,...public_bathrooms]
 
 
 }
 
+const publicData = async () => {
 
-export default Data
+}
+
+
+export {Data, publicData}
