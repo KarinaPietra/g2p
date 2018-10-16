@@ -59,7 +59,7 @@ class Map extends Component {
     loc.forEach((location, i) => {
 
       let elm = document.createElement('div')
-      
+
       // let public_bathrooms= this.props.pubReq
       if (location.public == true) {
         elm.className = "public-marker"
@@ -82,8 +82,9 @@ class Map extends Component {
 
   render() {
     const style = {
-      width: '100%',
+      width: '70%',
       height: '500px',
+      margin: 'auto',
       backgroundColor: 'azure'
     };
     return (
