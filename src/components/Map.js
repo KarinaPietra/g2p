@@ -6,9 +6,14 @@ import Popup from './Popup'
 import axios from 'axios'
 import {Data, publicData} from './Data.js'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
-
+import 'semantic-ui-css/semantic.min.css';
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 
 class Map extends Component {
+  constructor(props){
+    super(props)
+    this.state = {loaded: false}
+  }
   async componentDidMount() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keXdlaXNzMTk4MiIsImEiOiJIeHpkYVBrIn0.3N03oecxx5TaQz7YLg2HqA'
     const mapOptions = {
@@ -46,11 +51,11 @@ class Map extends Component {
     map.addControl(nav, 'top-right');
 
     map.on('load', (event) => {
-      Data().then(e => this.fetchPlaces(e))
-      // this.fetchPlaces(Data());
-
+      Data().then(e => {this.fetchPlaces(e); this.setState({loaded: true})})
     })
   }
+
+
 
   fetchPlaces = (loc) => {
     // this.state.location;
@@ -59,7 +64,7 @@ class Map extends Component {
     loc.forEach((location, i) => {
 
       let elm = document.createElement('div')
-      
+
       // let public_bathrooms= this.props.pubReq
       if (location.public == true) {
         elm.className = "public-marker"
@@ -86,10 +91,16 @@ class Map extends Component {
       height: '500px',
       backgroundColor: 'azure'
     };
+
+
     return (
-      <div style={style} ref={el => this.mapContainer = el} />
+      <Segment>
+        <Dimmer active={!this.state.loaded} />
+          <Loader  active={!this.state.loaded} />
+          <div style={style} ref={el => this.mapContainer = el} />
+      </Segment>
     )
-  }
+  };
 }
 
 
