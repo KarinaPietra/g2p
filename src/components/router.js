@@ -32,12 +32,10 @@ export default class Users extends Component{
             <div>
             <label>username:</label>
             <input className= "username" type="textarea" placeholder="username"/>
-            <input type="submit" value="Submit" />
             </div>
             <div>
             <label>password:</label>
             <input className= "password" type="password" placeholder="password"/>
-            <input type="submit" value="Submit" />
             </div>
           </div>
             <div className="user-button">
