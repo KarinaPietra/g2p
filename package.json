@@ -8,8 +8,10 @@
     "google-map-react": "^1.0.9",
     "mapbox-gl": "^0.50.0",
     "react": "^16.5.2",
+    "react-browser-router": "^2.1.2",
     "react-dom": "^16.5.2",
     "react-loader": "^2.4.5",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.4",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.82.5"

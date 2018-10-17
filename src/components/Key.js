@@ -1,5 +1,7 @@
 
 import React, { Component } from 'react';
+import {Link, Route, BrowseRouter} from 'react-router-dom'
+
 // import css2 from './marker.css'
 // import css from '../App.css'
 
@@ -24,7 +26,13 @@ export default class Key extends Component {
           <li>
           {pubImg} : public bathrooms
           </li>
+          <li className="users">
+            Join the fun:
+            <Link to="/users">Submit a Review</Link>
+          </li>
         </ol>
+
+
     </div>
   )
   }
